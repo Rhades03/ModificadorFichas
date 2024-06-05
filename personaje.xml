@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ficha>
+    <nombre>Rhades</nombre>
+    <lv>10</lv>
+    <sexo>Hombre</sexo>
+    <estadisticas>
+        <fuerza>40</fuerza>
+        <destreza>10</destreza>
+        <constitucion>10</constitucion>
+        <inteligencia>20</inteligencia>
+        <sabiduria>20</sabiduria>
+        <carisma>10</carisma>
+    </estadisticas>
+    <habilidades>
+        <acrobacias>false</acrobacias>
+        <atletismo>false</atletismo>
+        <cArcano>false</cArcano>
+        <engano>false</engano>
+        <historia>false</historia>
+        <interpretacion>false</interpretacion>
+        <investigacion>false</investigacion>
+        <juegoDeManos>false</juegoDeManos>
+        <medicina>false</medicina>
+        <naturaleza>false</naturaleza>
+        <orientacion>false</orientacion>
+        <percepcion>false</percepcion>
+        <perspicacia>false</perspicacia>
+        <persuasion>false</persuasion>
+        <presencia>false</presencia>
+        <supervivencia>false</supervivencia>
+        <trabajosForzados>false</trabajosForzados>
+    </habilidades>
+    <dotes>
+        <dote>Afotunado</dote>
+        <dote>Afotunado</dote>
+        <dote>Afotunado</dote>
+        <dote>Afortunado :/</dote>
+        <dote>Alerta</dote>
+    </dotes>
+</ficha>
