@@ -5,142 +5,152 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Fichas</title>
-  <link rel="stylesheet" src="style.css">
+  <link rel="stylesheet" href="index.css">
 </head>
 
 <body>
-  <input type="file" id="fileInput">
+  <div id="todo">
+    <input type="file" id="fileInput">
 
-  <div id="output">
-    <label>Nombre: <input type="text" id="nombre"></label><br>
-    <label>Nivel: <input type="text" id="lv"></label><br>
-    <label>Sexo: <input type="text" id="sexo"></label><br>
+    <div id="output">
+      <label>Nombre: <input type="text" id="nombre"></label>
+      <label>Nivel: <input type="text" id="lv"></label>
+      <label>Sexo: <input type="text" id="sexo"></label>
 
-    <fieldset>
-      <legend>Estadísticas:</legend>
-      <label>Fuerza: <input type="text" id="fuerza"></label><br>
-      <label>Destreza: <input type="text" id="destreza"></label><br>
-      <label>Constitución: <input type="text" id="constitucion"></label><br>
-      <label>Inteligencia: <input type="text" id="inteligencia"></label><br>
-      <label>Sabiduría: <input type="text" id="sabiduria"></label><br>
-      <label>Carisma: <input type="text" id="carisma"></label><br>
-    </fieldset>
-    <select id="dotes1" name="dotes1">
-      <option value=""></option>
-      <option value="Afotunado">Afotunado</option>
-      <option value="Duro">Duro</option>
-      <option value="Afortunado :/">Afortunado :/</option>
-      <option value="Alerta">Alerta</option>
-    </select>
-    <select id="dotes2" name="dotes2">
-      <option value=""></option>
-      <option value="Afotunado">Afotunado</option>
-      <option value="Duro">Duro</option>
-      <option value="Afortunado :/">Afortunado :/</option>
-      <option value="Alerta">Alerta</option>
-    </select>
-    <select id="dotes3" name="dotes3">
-      <option value=""></option>
-      <option value="Afotunado">Afotunado</option>
-      <option value="Duro">Duro</option>
-      <option value="Afortunado :/">Afortunado :/</option>
-      <option value="Alerta">Alerta</option>
-    </select>
-    <select id="dotes4" name="dotes4">
-      <option value=""></option>
-      <option value="Afotunado">Afotunado</option>
-      <option value="Duro">Duro</option>
-      <option value="Afortunado :/">Afortunado :/</option>
-      <option value="Alerta">Alerta</option>
-    </select>
-    <select id="dotes5" name="dotes5">
-      <option value=""></option>
-      <option value="Afotunado">Afotunado</option>
-      <option value="Duro">Duro</option>
-      <option value="Afortunado :/">Afortunado :/</option>
-      <option value="Alerta">Alerta</option>
-    </select>
+      <div class="flex-container">
+        <fieldset class="DivStatsBase">
+          <legend>Estadísticas</legend>
+          <label>Fuerza: <br><input type="text" id="fuerza" class="StatsBase"></label><br>
+          <label>Destreza: <br><input type="text" id="destreza" class="StatsBase"></label><br>
+          <label>Constitución: <br><input type="text" id="constitucion" class="StatsBase"></label><br>
+          <label>Inteligencia: <br><input type="text" id="inteligencia" class="StatsBase"></label><br>
+          <label>Sabiduría: <br><input type="text" id="sabiduria" class="StatsBase"></label><br>
+          <label>Carisma: <input type="text" id="carisma" class="StatsBase"></label>
+        </fieldset>
 
-    <fieldset>
-      <legend>Habilidades:</legend>
-      <label>Atletismo: <input type="checkbox" id="atletismo">
-        <p id="atletismoValor"></p>
-      </label><br>
-      <label>Acrobacias: <input type="checkbox" id="acrobacias">
-        <p id="acrobaciasValor"></p>
-      </label><br>
-      <label>Conocimiento Arcano: <input type="checkbox" id="cArcano">
-        <p id="cArcanoValor"></p>
-      </label><br>
-      <label>Historia: <input type="checkbox" id="historia">
-        <p id="historiaValor"></p>
-      </label><br>
-      <label>Investigación: <input type="checkbox" id="investigacion">
-        <p id="investigacionValor"></p>
-      </label><br>
-      <label>Naturaleza: <input type="checkbox" id="naturaleza">
-        <p id="naturalezaValor"></p>
-      </label><br>
-      <label>Orientación: <input type="checkbox" id="orientacion">
-        <p id="orientacionValor"></p>
-      </label><br>
-      <label>Percepción: <input type="checkbox" id="percepcion">
-        <p id="percepcionValor"></p>
-      </label><br>
-      <label>Medicina: <input type="checkbox" id="medicina">
-        <p id="medicinaValor"></p>
-      </label><br>
-      <label>Perspicacia: <input type="checkbox" id="perspicacia">
-        <p id="perspicaciaValor"></p>
-      </label><br>
-      <label>Supervivencia: <input type="checkbox" id="supervivencia">
-        <p id="supervivenciaValor"></p>
-      </label><br>
-      <label>Engaño: <input type="checkbox" id="engano">
-        <p id="enganoValor"></p>
-      </label><br>
-      <label>Intimidación: <input type="checkbox" id="presencia">
-        <p id="presenciaValor"></p>
-      </label><br>
-      <label>Interpretación: <input type="checkbox" id="interpretacion">
-        <p id="interpretacionValor"></p>
-      </label><br>
-      <label>Persuasión: <input type="checkbox" id="persuasion">
-        <p id="persuasionValor"></p>
-      </label><br>
-      <label>Juego De Manos: <input type="checkbox" id="juegoDeManos">
-        <p id="juegoDeManosValor"></p>
-      </label><br>
-      <label>Trabajos Forzados: <input type="checkbox" id="trabajosForzados">
-        <p id="trabajosForzadosValor"></p>
-      </label><br>
-    </fieldset>
+        <div class="salvacion-habilidades">
+          <fieldset>
+            <legend>Tiradas de Salvación</legend>
+            <label class="salvacion-habilidades">Fuerza: <input type="checkbox" id="fuerzaTS">
+              <span id="fuerzaText"></span>
+            </label>
+            <label class="salvacion-habilidades">Destreza: <input type="checkbox" id="destrezaTS">
+              <span id="destrezaText"></span>
+            </label>
+            <label class="salvacion-habilidades">Constitución: <input type="checkbox" id="constitucionTS">
+              <span id="constitucionText"></span>
+            </label>
+            <label class="salvacion-habilidades">Inteligencia: <input type="checkbox" id="inteligenciaTS">
+              <span id="inteligenciaText"></span>
+            </label>
+            <label class="salvacion-habilidades">Sabiduría: <input type="checkbox" id="sabiduriaTS">
+              <span id="sabiduriaText"></span>
+            </label>
+            <label class="salvacion-habilidades">Carisma: <input type="checkbox" id="carismaTS">
+              <span id="carismaText"></span>
+            </label>
+          </fieldset>
 
-    <fieldset>
-      <legend>Tiradas de Salvación:</legend>
-      <label>Fuerza: <input type="checkbox" id="fuerzaTS">
-        <p id="fuerzaText"></p>
-      </label><br>
-      <label>Destreza: <input type="checkbox" id="destrezaTS">
-        <p id="destrezaText"></p>
-      </label><br>
-      <label>Constitución: <input type="checkbox" id="constitucionTS">
-        <p id="constitucionText"></p>
-      </label><br>
-      <label>Inteligencia: <input type="checkbox" id="inteligenciaTS">
-        <p id="inteligenciaText"></p>
-      </label><br>
-      <label>Sabiduría: <input type="checkbox" id="sabiduriaTS">
-        <p id="sabiduriaText"></p>
-      </label><br>
-      <label>Carisma: <input type="checkbox" id="carismaTS">
-        <p id="carismaText"></p>
-      </label><br>
-    </fieldset>
+          <fieldset>
+            <legend>Habilidades</legend>
+            <label class="salvacion-habilidades">Atletismo: <input type="checkbox" id="atletismo">
+              <span id="atletismoValor"></span>
+            </label>
+            <label class="salvacion-habilidades">Acrobacias: <input type="checkbox" id="acrobacias">
+              <span id="acrobaciasValor"></span>
+            </label>
+            <label class="salvacion-habilidades">Conocimiento Arcano: <input type="checkbox" id="cArcano">
+              <span id="cArcanoValor"></span>
+            </label>
+            <label class="salvacion-habilidades">Historia: <input type="checkbox" id="historia">
+              <span id="historiaValor"></span>
+            </label>
+            <label class="salvacion-habilidades">Investigación: <input type="checkbox" id="investigacion">
+              <span id="investigacionValor"></span>
+            </label>
+            <label class="salvacion-habilidades">Naturaleza: <input type="checkbox" id="naturaleza">
+              <span id="naturalezaValor"></span>
+            </label>
+            <label class="salvacion-habilidades">Orientación: <input type="checkbox" id="orientacion">
+              <span id="orientacionValor"></span>
+            </label>
+            <label class="salvacion-habilidades">Percepción: <input type="checkbox" id="percepcion">
+              <span id="percepcionValor"></span>
+            </label>
+            <label class="salvacion-habilidades">Medicina: <input type="checkbox" id="medicina">
+              <span id="medicinaValor"></span>
+            </label>
+            <label class="salvacion-habilidades">Perspicacia: <input type="checkbox" id="perspicacia">
+              <span id="perspicaciaValor"></span>
+            </label>
+            <label class="salvacion-habilidades">Supervivencia: <input type="checkbox" id="supervivencia">
+              <span id="supervivenciaValor"></span>
+            </label>
+            <label class="salvacion-habilidades">Engaño: <input type="checkbox" id="engano">
+              <span id="enganoValor"></span>
+            </label>
+            <label class="salvacion-habilidades">Intimidación: <input type="checkbox" id="presencia">
+              <span id="presenciaValor"></span>
+            </label>
+            <label class="salvacion-habilidades">Interpretación: <input type="checkbox" id="interpretacion">
+              <span id="interpretacionValor"></v>
+            </label>
+            <label class="salvacion-habilidades">Persuasión: <input type="checkbox" id="persuasion">
+              <span id="persuasionValor"></span>
+            </label>
+            <label class="salvacion-habilidades">Juego De Manos: <input type="checkbox" id="juegoDeManos">
+              <span id="juegoDeManosValor"></span>
+            </label>
+            <label class="salvacion-habilidades">Trabajos Forzados: <input type="checkbox" id="trabajosForzados">
+              <span id="trabajosForzadosValor"></span>
+            </label>
+          </fieldset>
 
+          <fieldset class="dotes">
+            <legend>Dotes</legend>
+            <select id="dotes1" name="dotes1">
+              <option value=""></option>
+              <option value="Afotunado">Afotunado</option>
+              <option value="Duro">Duro</option>
+              <option value="Afortunado :/">Afortunado :/</option>
+              <option value="Alerta">Alerta</option>
+            </select>
+            <select id="dotes2" name="dotes2">
+              <option value=""></option>
+              <option value="Afotunado">Afotunado</option>
+              <option value="Duro">Duro</option>
+              <option value="Afortunado :/">Afortunado :/</option>
+              <option value="Alerta">Alerta</option>
+            </select>
+            <select id="dotes3" name="dotes3">
+              <option value=""></option>
+              <option value="Afotunado">Afotunado</option>
+              <option value="Duro">Duro</option>
+              <option value="Afortunado :/">Afortunado :/</option>
+              <option value="Alerta">Alerta</option>
+            </select>
+            <select id="dotes4" name="dotes4">
+              <option value=""></option>
+              <option value="Afotunado">Afotunado</option>
+              <option value="Duro">Duro</option>
+              <option value="Afortunado :/">Afortunado :/</option>
+              <option value="Alerta">Alerta</option>
+            </select>
+            <select id="dotes5" name="dotes5">
+              <option value=""></option>
+              <option value="Afotunado">Afotunado</option>
+              <option value="Duro">Duro</option>
+              <option value="Afortunado :/">Afortunado :/</option>
+              <option value="Alerta">Alerta</option>
+            </select>
+          </fieldset>
+        </div>
+        </div>
+      </div>
+      
+
+    <script src="./index.js"></script>
   </div>
-
-  <script src="./index.js"></script>
 </body>
 
 </html>
