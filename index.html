@@ -145,7 +145,29 @@
               <option value="Alerta">Alerta</option>
             </select>
           </fieldset>
+
         </div>
+        <fieldset id="habilidades">
+          <legend>Habilidades</legend>
+
+          <div id="myModal" class="modal">
+            <div class="modal-content">
+                <span class="close">&times;</span>
+                <h2>Añadir Habilidad</h2>
+                <form id="habilidadForm">
+                    <label for="nombre">Nombre:</label>
+                    <input type="text" id="nombreInput" name="nombre" required><br><br>
+                    <label for="efecto">Efecto:</label>
+                    <input type="text" id="efectoInput" name="efecto" required><br><br>
+                    <label for="daño">Daño:</label>
+                    <input type="text" id="dañoInput" name="daño" required><br><br>
+                    <label for="coste">Coste:</label>
+                    <input type="text" id="costeInput" name="coste" required><br><br>
+                    <button type="submit">Agregar</button>
+                </form>
+            </div>
+        </div>
+        </fieldset>
         </div>
       </div>
       
