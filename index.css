@@ -1,7 +1,5 @@
 .DivStatsBase{
-
     width: 10vh;
-    
     text-align: center;
 }
 
@@ -39,4 +37,8 @@ fieldset{
 }
 select{
     width: 7vh;
+}
+button {
+    margin-left: auto;
+    
 }

@@ -163,3 +163,8 @@ function updateTiradaSalvacion(salvacionID, lv, baseValue) {
     pValue.textContent = Math.floor(((baseValue - 10) / 2)); // Redondear hacia abajo
   }
 }
+
+function copiarTirada(origen){
+ var bonificador = document.getElementById(origen); 
+ navigator.clipboard.writeText("/r d20+"+bonificador.textContent);
+}
