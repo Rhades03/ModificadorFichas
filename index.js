@@ -16,6 +16,7 @@ function processXML(xml) {
   document.getElementById('nombre').value = xml.getElementsByTagName("nombre")[0].textContent;
   document.getElementById('lv').value = xml.getElementsByTagName("lv")[0].textContent;
   document.getElementById('sexo').value = xml.getElementsByTagName("sexo")[0].textContent;
+  document.getElementById('inputMana').value = xml.getElementsByTagName("mana")[0].textContent;
 
   document.getElementById('fuerza').value = xml.getElementsByTagName("fuerza")[0].textContent;
   document.getElementById('destreza').value = xml.getElementsByTagName("destreza")[0].textContent;
@@ -79,35 +80,48 @@ function processXML(xml) {
   contenedor.appendChild(leyenda);
 
   for (let i = 0; i < habilidades.length; i++) {
-    const divHabilidad = crearHabilidadDiv(habilidades[i]);
+    const divHabilidad = lecturaHabilidadesDiv(habilidades[i]);
     contenedor.appendChild(divHabilidad);
   }
 }
 
-function crearHabilidadDiv(habilidad) {
+function lecturaHabilidadesDiv(habilidad) {
   const br1 = document.createElement('br');
   const br2 = document.createElement('br');
   const br3 = document.createElement('br');
   const br4 = document.createElement('br');
+  const br5 = document.createElement('br');
+  const br6 = document.createElement('br');
+  const br7 = document.createElement('br');
 
   const div = document.createElement('div');
   div.classList.add('habilidad');
 
-  const nombre = document.createElement('span');
+  const nombre = document.createElement('textarea');
+  nombre.type = 'text';
   nombre.classList.add('nombre');
-  nombre.textContent = `${habilidad.getElementsByTagName('nombre')[0].textContent}`;
+  nombre.value = `${habilidad.getElementsByTagName('nombre')[0].textContent}`;
 
-  const efecto = document.createElement('span');
+  const efectoSpan = document.createElement('span');
+  efectoSpan.textContent = 'Efecto:';
+  const efecto = document.createElement('textarea');
+  efecto.type = 'text';
   efecto.classList.add('efecto');
-  efecto.textContent = `Efecto: ${habilidad.getElementsByTagName('efecto')[0].textContent}`;
+  efecto.value = `${habilidad.getElementsByTagName('efecto')[0].textContent}`;
 
-  const daño = document.createElement('span');
+  const dañoSpan = document.createElement('span');
+  dañoSpan.textContent = 'Daño:';
+  const daño = document.createElement('textarea');
+  daño.type = 'text';
   daño.classList.add('daño');
-  daño.textContent = `Daño: ${habilidad.getElementsByTagName('daño')[0].textContent}`;
+  daño.value = `${habilidad.getElementsByTagName('daño')[0].textContent}`;
 
-  const coste = document.createElement('span');
+  const costeSpan = document.createElement('span');
+  costeSpan.textContent = 'Coste:';
+  const coste = document.createElement('textarea');
+  coste.type = 'text';
   coste.classList.add('coste');
-  coste.textContent = `Coste: ${habilidad.getElementsByTagName('coste')[0].textContent}`;
+  coste.value = `${habilidad.getElementsByTagName('coste')[0].textContent}`;
 
   const boton = document.createElement('button');
   boton.textContent = 'Usar Habilidad';
@@ -120,16 +134,95 @@ function crearHabilidadDiv(habilidad) {
 
   div.appendChild(nombre);
   div.appendChild(br1);
+  div.appendChild(efectoSpan);
+  div.appendChild(br5);
   div.appendChild(efecto);
   div.appendChild(br2);
+  div.appendChild(dañoSpan);
+  div.appendChild(br6);
   div.appendChild(daño);
   div.appendChild(br3);
+  div.appendChild(costeSpan);
+  div.appendChild(br7);
   div.appendChild(coste);
   div.appendChild(br4);
   div.appendChild(boton);
 
   return div;
 
+}
+
+function  crearHabilidad() {
+  const br1 = document.createElement('br');
+  const br2 = document.createElement('br');
+  const br3 = document.createElement('br');
+  const br4 = document.createElement('br');
+  const br5 = document.createElement('br');
+  const br6 = document.createElement('br');
+  const br7 = document.createElement('br');
+
+  const nombre1 = document.getElementById('nombreForm').value;
+  const efecto1 = document.getElementById('efectoForm').value;
+  const daño1 = document.getElementById('dañoForm').value;
+  const coste1 = document.getElementById('costeForm').value;
+
+  const div = document.createElement('div');
+  div.classList.add('habilidad');
+
+
+  const nombre = document.createElement('textarea');
+  nombre.type = 'text';
+  nombre.classList.add('nombre');
+  nombre.value = nombre1;
+
+  const efectoSpan = document.createElement('span');
+  efectoSpan.textContent = 'Efecto:';
+  const efecto = document.createElement('textarea');
+  efecto.type = 'text';
+  efecto.classList.add('efecto');
+  efecto.value = efecto1;
+
+  const dañoSpan = document.createElement('span');
+  dañoSpan.textContent = 'Daño:';
+  const daño = document.createElement('textarea');
+  daño.type = 'text';
+  daño.classList.add('daño');
+  daño.value = daño1;
+
+  const costeSpan = document.createElement('span');
+  costeSpan.textContent = 'Coste:';
+  const coste = document.createElement('textarea');
+  coste.type = 'text';
+  coste.classList.add('coste');
+  coste.value = coste1;
+
+  const boton = document.createElement('button');
+  boton.textContent = 'Usar Habilidad';
+  boton.onclick = () => {
+    // Acción del botón
+    alert(`Usando la habilidad: ${nombre.textContent}`);
+  };
+
+  // Añadir elementos al div
+
+  div.appendChild(nombre);
+  div.appendChild(br1);
+  div.appendChild(efectoSpan);
+  div.appendChild(br5);
+  div.appendChild(efecto);
+  div.appendChild(br2);
+  div.appendChild(dañoSpan);
+  div.appendChild(br6);
+  div.appendChild(daño);
+  div.appendChild(br3);
+  div.appendChild(costeSpan);
+  div.appendChild(br7);
+  div.appendChild(coste);
+  div.appendChild(br4);
+  div.appendChild(boton);
+
+  const contenedor = document.getElementById('habilidades');
+  contenedor.appendChild(div);
 }
 
 function setCheckboxValue(id, xml) {
@@ -180,7 +273,7 @@ function updateTodo() {
   updateTiradaSalvacion('sabiduria', lv, sabiduria);
   updateTiradaSalvacion('carisma', lv, carisma);
 
-
+  updateBonificador(lv);
 }
 
 function updateHabilidad(skillId, lv, baseValue, baseValue2) {
@@ -228,50 +321,117 @@ function copiarTirada(origen) {
   navigator.clipboard.writeText("/r d20+" + bonificador.textContent);
 }
 
-// Código para manejar el modal
-var modal = document.getElementById("myModal");
-var btn = document.getElementById("addHabilidadBtn");
-var span = document.getElementsByClassName("close")[0];
-var form = document.getElementById("habilidadForm");
-
-btn.onclick = function () {
-  modal.style.display = "block";
+function updateBonificador(lv) {
+  var bonificadorCompetencia = document.getElementById('bonificadorComp');
+  if (lv >= 1) bonificadorCompetencia.textContent = 2;
+  if (lv >= 5) bonificadorCompetencia.textContent = 3;
+  if (lv >= 9) bonificadorCompetencia.textContent = 4;
+  if (lv >= 13) bonificadorCompetencia.textContent = 5;
+  if (lv >= 17) bonificadorCompetencia.textContent = 6;
 }
 
-span.onclick = function () {
-  modal.style.display = "none";
-}
 
-window.onclick = function (event) {
-  if (event.target == modal) {
-    modal.style.display = "none";
-  }
-}
 
-form.onsubmit = function (event) {
-  event.preventDefault();
 
-  const nombre = document.getElementById("nombreInput").value;
-  const efecto = document.getElementById("efectoInput").value;
-  const daño = document.getElementById("dañoInput").value;
-  const coste = document.getElementById("costeInput").value;
 
-  const habilidad = {
-    getElementsByTagName: function (tagName) {
-      const mapping = {
-        'nombre': { textContent: nombre },
-        'efecto': { textContent: efecto },
-        'daño': { textContent: daño },
-        'coste': { textContent: coste }
-      };
-      return [mapping[tagName]];
-    }
-  };
 
-  const contenedor = document.getElementById('habilidades');
-  const divHabilidad = crearHabilidadDiv(habilidad);
-  contenedor.appendChild(divHabilidad);
+function guardarXML() {
+  const nombre = document.getElementById("nombre").value;
+  const nivel = document.getElementById("lv").value;
+  const sexo = document.getElementById("sexo").value;
+  const mana = document.getElementById("inputMana").value;
 
-  modal.style.display = "none";
-  form.reset();
+  const fuerza = document.getElementById("fuerza").value;
+  const destreza = document.getElementById("destreza").value;
+  const constitucion = document.getElementById("constitucion").value;
+  const inteligencia = document.getElementById("inteligencia").value;
+  const sabiduria = document.getElementById("sabiduria").value;
+  const carisma = document.getElementById("carisma").value;
+  
+  const habilidades = [
+      "acrobacias", "atletismo", "cArcano", "engano", "historia", "interpretacion", "investigacion",
+      "juegoDeManos", "medicina", "naturaleza", "orientacion", "percepcion", "perspicacia", 
+      "persuasion", "presencia", "supervivencia", "trabajosForzados"
+  ];
+  
+  const dotes = [
+      document.getElementById("dotes1").value,
+      document.getElementById("dotes2").value,
+      document.getElementById("dotes3").value,
+      document.getElementById("dotes4").value,
+      document.getElementById("dotes5").value
+  ];
+
+  const tiradasSalvacion = [
+      "fuerzaTS", "destrezaTS", "constitucionTS", "inteligenciaTS", "sabiduriaTS", "carismaTS"
+  ];
+
+  // Crear la estructura XML
+  let xml = `<?xml version="1.0" encoding="UTF-8"?>
+<ficha>
+  <nombre>${nombre}</nombre>
+  <lv>${nivel}</lv>
+  <sexo>${sexo}</sexo>
+  <mana>${mana}</mana>
+  <estadisticas>
+      <fuerza>${fuerza}</fuerza>
+      <destreza>${destreza}</destreza>
+      <constitucion>${constitucion}</constitucion>
+      <inteligencia>${inteligencia}</inteligencia>
+      <sabiduria>${sabiduria}</sabiduria>
+      <carisma>${carisma}</carisma>
+  </estadisticas>
+  <tiradasSalvacion>`;
+
+  tiradasSalvacion.forEach(tirada => {
+      const valor = document.getElementById(tirada).checked;
+      xml += `\n        <${tirada}>${valor}</${tirada}>`;
+  });
+
+  xml += `
+  </tiradasSalvacion>
+  <habilidades>`;
+  
+  habilidades.forEach(habilidad => {
+      const valor = document.getElementById(habilidad).checked;
+      xml += `\n        <${habilidad}>${valor}</${habilidad}>`;
+  });
+
+  xml += `
+  </habilidades>
+  <dotes>`;
+  
+  dotes.forEach(dote => {
+      xml += `\n        <dote>${dote}</dote>`;
+  });
+
+  xml += `
+  </dotes>
+  <habilidades>`;
+  
+  document.querySelectorAll("#habilidades .habilidad").forEach(habilidadDiv => {
+      const nombre = habilidadDiv.querySelector(".nombre").value;
+      const efecto = habilidadDiv.querySelector(".efecto").value;
+      const daño = habilidadDiv.querySelector(".daño").value;
+      const coste = habilidadDiv.querySelector(".coste").value;
+      
+      xml += `
+      <habilidad>
+          <nombre>${nombre}</nombre>
+          <efecto>${efecto}</efecto>
+          <daño>${daño}</daño>
+          <coste>${coste}</coste>
+      </habilidad>`;
+  });
+
+  xml += `
+  </habilidades>
+</ficha>`;
+
+  // Descargar el archivo XML
+  const blob = new Blob([xml], { type: "application/xml" });
+  const a = document.createElement("a");
+  a.href = URL.createObjectURL(blob);
+  a.download = "ficha.xml";
+  a.click();
 }

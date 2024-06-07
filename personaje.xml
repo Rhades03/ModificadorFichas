@@ -3,6 +3,7 @@
     <nombre>Rhades</nombre>
     <lv>10</lv>
     <sexo>Hombre</sexo>
+    <mana>102</mana>
     <estadisticas>
         <fuerza>40</fuerza>
         <destreza>10</destreza>
@@ -43,18 +44,6 @@
             <efecto>Después de hacer este ataque el usuario se quedará sin magia</efecto>
             <daño>1000d10</daño>
             <coste>0</coste>
-        </habilidad>
-        <habilidad>
-            <nombre></nombre>
-            <efecto></efecto>
-            <daño></daño>
-            <coste></coste>
-        </habilidad>
-        <habilidad>
-            <nombre>Vacío Purpura</nombre>
-            <efecto>InstaKill</efecto>
-            <daño></daño>
-            <coste>1000</coste>
         </habilidad>
     </habilidades>
 </ficha>

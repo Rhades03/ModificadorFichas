@@ -11,7 +11,7 @@
 <body>
   <input type="file" id="fileInput">
   <div id="todo">
-    
+
 
     <div id="output">
       <label>Nombre: <input type="text" id="nombre"></label>
@@ -19,6 +19,11 @@
       <label>Sexo: <input type="text" id="sexo"></label>
 
       <div class="flex-container">
+        <div>
+          <div class="DivBonificador">
+          <Span>Bonificador por competencia para Mañacka:</Span>
+          <span id="bonificadorComp"></span>
+        </div>
         <fieldset class="DivStatsBase">
           <legend>Estadísticas</legend>
           <label>Fuerza: <br><input type="text" id="fuerza" class="StatsBase"></label><br>
@@ -28,7 +33,7 @@
           <label>Sabiduría: <br><input type="text" id="sabiduria" class="StatsBase"></label><br>
           <label>Carisma: <input type="text" id="carisma" class="StatsBase"></label>
         </fieldset>
-
+      </div>
         <div class="salvacion-habilidades">
           <fieldset>
             <legend>Tiradas de Salvación</legend>
@@ -103,7 +108,8 @@
               <span id="juegoDeManosValor"></span> <button onclick="copiarTirada('juegoDeManosValor')">Rol</button>
             </label>
             <label class="salvacion-habilidades">Trabajos Forzados: <input type="checkbox" id="trabajosForzados">
-              <span id="trabajosForzadosValor"></span> <button onclick="copiarTirada('trabajosForzadosValor')">Rol</button>
+              <span id="trabajosForzadosValor"></span> <button
+                onclick="copiarTirada('trabajosForzadosValor')">Rol</button>
             </label>
           </fieldset>
 
@@ -147,30 +153,34 @@
           </fieldset>
 
         </div>
+        <div>
+          <div id="Mana">
+            <span>Mana</span>
+            <input id="inputMana"></input>
+          </div>
         <fieldset id="habilidades">
           <legend>Habilidades</legend>
-
-          <div id="myModal" class="modal">
-            <div class="modal-content">
-                <span class="close">&times;</span>
-                <h2>Añadir Habilidad</h2>
-                <form id="habilidadForm">
-                    <label for="nombre">Nombre:</label>
-                    <input type="text" id="nombreInput" name="nombre" required><br><br>
-                    <label for="efecto">Efecto:</label>
-                    <input type="text" id="efectoInput" name="efecto" required><br><br>
-                    <label for="daño">Daño:</label>
-                    <input type="text" id="dañoInput" name="daño" required><br><br>
-                    <label for="coste">Coste:</label>
-                    <input type="text" id="costeInput" name="coste" required><br><br>
-                    <button type="submit">Agregar</button>
-                </form>
-            </div>
-        </div>
         </fieldset>
-        </div>
+
+        <fieldset id="crearHabilidades">
+          <legend>Crea tu habilidad:</legend>
+        <form action="" method="post" onsubmit="crearHabilidad(); return false;">
+          <label for="nombre">Nombre de la habilidad:</label>
+          <input type="text" id="nombreForm" name="nombre" required/><br />
+          <label for="efecto">Efecto de la habilidad:</label>
+          <input type="text" id="efectoForm" name="efecto" required/><br />
+          <label for="daño">Daño de la habilidad:</label>
+          <input type="text" id="dañoForm" name="daño" /><br />
+          <label for="coste">Coste de la habilidad:</label>
+          <input type="text" id="costeForm" name="coste" required/><br />
+          <input type="submit" value="Submit" />
+        </form>
+      </fieldset>
+    </div>
       </div>
-      
+    </div>
+
+    <button onclick="guardarXML()">Guardar XML</button>
 
     <script src="./index.js"></script>
   </div>
