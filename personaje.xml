@@ -1,35 +1,35 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <ficha>
-    <nombre>Rhades</nombre>
-    <lv>10</lv>
-    <sexo>Hombre</sexo>
-    <mana>102</mana>
+    <nombre></nombre>
+    <lv></lv>
+    <sexo></sexo>
+    <mana></mana>
     <estadisticas>
-        <fuerza>40</fuerza>
-        <destreza>10</destreza>
-        <constitucion>10</constitucion>
-        <inteligencia>20</inteligencia>
-        <sabiduria>20</sabiduria>
-        <carisma>10</carisma>
+        <fuerza></fuerza>
+        <destreza></destreza>
+        <constitucion></constitucion>
+        <inteligencia></inteligencia>
+        <sabiduria></sabiduria>
+        <carisma></carisma>
     </estadisticas>
     <habilidades>
-        <acrobacias>false</acrobacias>
-        <atletismo>false</atletismo>
-        <cArcano>false</cArcano>
-        <engano>false</engano>
-        <historia>false</historia>
-        <interpretacion>false</interpretacion>
-        <investigacion>false</investigacion>
-        <juegoDeManos>false</juegoDeManos>
-        <medicina>false</medicina>
-        <naturaleza>false</naturaleza>
-        <orientacion>false</orientacion>
-        <percepcion>false</percepcion>
-        <perspicacia>false</perspicacia>
-        <persuasion>false</persuasion>
-        <presencia>false</presencia>
-        <supervivencia>false</supervivencia>
-        <trabajosForzados>false</trabajosForzados>
+        <acrobacias></acrobacias>
+        <atletismo></atletismo>
+        <cArcano></cArcano>
+        <engano></engano>
+        <historia></historia>
+        <interpretacion></interpretacion>
+        <investigacion></investigacion>
+        <juegoDeManos></juegoDeManos>
+        <medicina></medicina>
+        <naturaleza></naturaleza>
+        <orientacion></orientacion>
+        <percepcion></percepcion>
+        <perspicacia></perspicacia>
+        <persuasion></persuasion>
+        <presencia></presencia>
+        <supervivencia></supervivencia>
+        <trabajosForzados></trabajosForzados>
     </habilidades>
     <dotes>
         <dote>Afotunado</dote>
@@ -39,11 +39,5 @@
         <dote>Alerta</dote>
     </dotes>
     <habilidades>
-        <habilidad>
-            <nombre>Getsuga Tensho Final</nombre>
-            <efecto>Después de hacer este ataque el usuario se quedará sin magia</efecto>
-            <daño>1000d10</daño>
-            <coste>0</coste>
-        </habilidad>
     </habilidades>
 </ficha>
