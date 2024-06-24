@@ -12,6 +12,8 @@ document.getElementById('fileInput').addEventListener('change', function (event)
   reader.readAsText(file);
 });
 
+
+
 function processXML(xml) {
   document.getElementById('nombre').value = xml.getElementsByTagName("nombre")[0].textContent;
   document.getElementById('lv').value = xml.getElementsByTagName("lv")[0].textContent;
@@ -83,8 +85,28 @@ function processXML(xml) {
     const divHabilidad = lecturaHabilidadesDiv(habilidades[i]);
     contenedor.appendChild(divHabilidad);
   }
-}
 
+  function ajustarAltura(elemento) {
+   elemento.style.height = 'auto';
+    elemento.style.width = 'auto';
+    elemento.style.height = (elemento.scrollHeight) + 'px';
+    elemento.style.width = (elemento.scrollWidth) + 'px'; 
+  }
+  
+  // Obtener todos los textareas
+  var textareas = document.querySelectorAll('textarea');
+  
+  // Ajustar la altura inicial de cada textarea
+  textareas.forEach(function(textarea) {
+    ajustarAltura(textarea);
+  
+    // Ajustar la altura en el evento 'input'
+    textarea.addEventListener('input', function() {
+        ajustarAltura(this);
+    });
+  });
+}
+var contadorDiv = 1;
 function lecturaHabilidadesDiv(habilidad) {
   const br1 = document.createElement('br');
   const br2 = document.createElement('br');
@@ -94,8 +116,22 @@ function lecturaHabilidadesDiv(habilidad) {
   const br6 = document.createElement('br');
   const br7 = document.createElement('br');
 
+  var img = document.createElement('img');
+    img.src = 'https://img.icons8.com/ios/50/visible--v1.png';
+    img.style.width = '30px';
+    img.style.height = '30px';
+
+  const btn =  document.createElement('button');
+  btn.classList.add('hideInfo');
+  btn.appendChild(img);
+  btn.id = 'habilidad'+contadorDiv;
+  btn.onclick = () => {
+    // Acción del botón
+    ocultismo(btn.id);
+  };
+
   const div = document.createElement('div');
-  div.classList.add('habilidad');
+  div.classList.add('habilidad'+contadorDiv);
 
   const nombre = document.createElement('textarea');
   nombre.type = 'text';
@@ -125,14 +161,11 @@ function lecturaHabilidadesDiv(habilidad) {
 
   const boton = document.createElement('button');
   boton.textContent = 'Usar Habilidad';
-  boton.onclick = () => {
-    // Acción del botón
-    alert(`Usando la habilidad: ${nombre.textContent}`);
-  };
-
+  
   // Añadir elementos al div
 
   div.appendChild(nombre);
+  div.appendChild(btn)
   div.appendChild(br1);
   div.appendChild(efectoSpan);
   div.appendChild(br5);
@@ -147,12 +180,12 @@ function lecturaHabilidadesDiv(habilidad) {
   div.appendChild(coste);
   div.appendChild(br4);
   div.appendChild(boton);
-
+  contadorDiv++;
   return div;
-
+ 
 }
 
-function  crearHabilidad() {
+function crearHabilidad() {
   const br1 = document.createElement('br');
   const br2 = document.createElement('br');
   const br3 = document.createElement('br');
@@ -167,8 +200,22 @@ function  crearHabilidad() {
   const coste1 = document.getElementById('costeForm').value;
 
   const div = document.createElement('div');
-  div.classList.add('habilidad');
+  div.classList.add('habilidad' + contadorDiv);
 
+  var img = document.createElement('img');
+  img.src = 'https://img.icons8.com/ios/50/visible--v1.png';
+  img.style.width = '30px';
+  img.style.height = '30px';
+  img.classList.add('toggle-img'); // Añadir una clase para fácil acceso
+
+  const btn = document.createElement('button');
+  btn.classList.add('hideInfo');
+  btn.appendChild(img);
+  btn.id = 'habilidad' + contadorDiv;
+  btn.onclick = () => {
+    // Acción del botón
+    ocultismo(btn.id);
+  };
 
   const nombre = document.createElement('textarea');
   nombre.type = 'text';
@@ -198,14 +245,10 @@ function  crearHabilidad() {
 
   const boton = document.createElement('button');
   boton.textContent = 'Usar Habilidad';
-  boton.onclick = () => {
-    // Acción del botón
-    alert(`Usando la habilidad: ${nombre.textContent}`);
-  };
 
   // Añadir elementos al div
-
   div.appendChild(nombre);
+  div.appendChild(btn);
   div.appendChild(br1);
   div.appendChild(efectoSpan);
   div.appendChild(br5);
@@ -223,6 +266,34 @@ function  crearHabilidad() {
 
   const contenedor = document.getElementById('habilidades');
   contenedor.appendChild(div);
+
+  contadorDiv++;
+}
+
+function ocultismo(divId) {
+  const button = document.getElementById(divId);
+  const divaOcultar = button.parentElement;
+  const img = button.querySelector('img'); // Obtener la imagen dentro del botón
+
+  const elements = Array.from(divaOcultar.children).filter(child => 
+    child !== button && !(child.tagName === 'TEXTAREA' && child.classList.contains('nombre'))
+  );
+
+  elements.forEach(element => {
+    if (element.style.display === 'none') {
+      element.style.display = '';
+    } else {
+      element.style.display = 'none';
+    }
+  });
+
+  // Cambiar la imagen del botón
+  const anyHidden = elements.some(element => element.style.display === 'none');
+  if (anyHidden) {
+    img.src = 'https://img.icons8.com/ios/50/hide.png';
+  } else {
+    img.src = 'https://img.icons8.com/ios/50/visible--v1.png';
+  }
 }
 
 function setCheckboxValue(id, xml) {
@@ -347,23 +418,27 @@ function guardarXML() {
   const inteligencia = document.getElementById("inteligencia").value;
   const sabiduria = document.getElementById("sabiduria").value;
   const carisma = document.getElementById("carisma").value;
-  
-  const habilidades = [
-      "acrobacias", "atletismo", "cArcano", "engano", "historia", "interpretacion", "investigacion",
-      "juegoDeManos", "medicina", "naturaleza", "orientacion", "percepcion", "perspicacia", 
-      "persuasion", "presencia", "supervivencia", "trabajosForzados"
-  ];
-  
-  const dotes = [
-      document.getElementById("dotes1").value,
-      document.getElementById("dotes2").value,
-      document.getElementById("dotes3").value,
-      document.getElementById("dotes4").value,
-      document.getElementById("dotes5").value
+
+  // Obtener las habilidades generales y sus valores
+  const habilidadesGenerales = [
+    "acrobacias", "atletismo", "cArcano", "engano", "historia", "interpretacion", 
+    "investigacion", "juegoDeManos", "medicina", "naturaleza", "orientacion", 
+    "percepcion", "perspicacia", "persuasion", "presencia", "supervivencia", 
+    "trabajosForzados"
   ];
 
+  // Obtener las dotes
+  const dotes = [
+    document.getElementById("dotes1").value,
+    document.getElementById("dotes2").value,
+    document.getElementById("dotes3").value,
+    document.getElementById("dotes4").value,
+    document.getElementById("dotes5").value
+  ];
+
+  // Obtener las tiradas de salvación
   const tiradasSalvacion = [
-      "fuerzaTS", "destrezaTS", "constitucionTS", "inteligenciaTS", "sabiduriaTS", "carismaTS"
+    "fuerzaTS", "destrezaTS", "constitucionTS", "inteligenciaTS", "sabiduriaTS", "carismaTS"
   ];
 
   // Crear la estructura XML
@@ -374,29 +449,32 @@ function guardarXML() {
   <sexo>${sexo}</sexo>
   <mana>${mana}</mana>
   <estadisticas>
-      <fuerza>${fuerza}</fuerza>
-      <destreza>${destreza}</destreza>
-      <constitucion>${constitucion}</constitucion>
-      <inteligencia>${inteligencia}</inteligencia>
-      <sabiduria>${sabiduria}</sabiduria>
-      <carisma>${carisma}</carisma>
+    <fuerza>${fuerza}</fuerza>
+    <destreza>${destreza}</destreza>
+    <constitucion>${constitucion}</constitucion>
+    <inteligencia>${inteligencia}</inteligencia>
+    <sabiduria>${sabiduria}</sabiduria>
+    <carisma>${carisma}</carisma>
   </estadisticas>
   <tiradasSalvacion>`;
 
+  // Agregar las tiradas de salvación al XML
   tiradasSalvacion.forEach(tirada => {
-      const valor = document.getElementById(tirada).checked;
-      xml += `\n        <${tirada}>${valor}</${tirada}>`;
+    const valor = document.getElementById(tirada).checked ? "true" : "false";
+    xml += `\n    <${tirada}>${valor}</${tirada}>`;
   });
 
   xml += `
   </tiradasSalvacion>
   <habilidades>`;
-  
-  habilidades.forEach(habilidad => {
-      const valor = document.getElementById(habilidad).checked;
-      xml += `\n        <${habilidad}>${valor}</${habilidad}>`;
+
+  // Agregar habilidades generales al XML
+  habilidadesGenerales.forEach(habilidad => {
+    const valor = document.getElementById(habilidad).checked ? "true" : "false";
+    xml += `\n    <${habilidad}>${valor}</${habilidad}>`;
   });
 
+  
   xml += `
   </habilidades>
   <dotes>`;
@@ -407,21 +485,26 @@ function guardarXML() {
 
   xml += `
   </dotes>
-  <habilidades>`;
+  <habilidades>`
   
-  document.querySelectorAll("#habilidades .habilidad").forEach(habilidadDiv => {
-      const nombre = habilidadDiv.querySelector(".nombre").value;
-      const efecto = habilidadDiv.querySelector(".efecto").value;
-      const daño = habilidadDiv.querySelector(".daño").value;
-      const coste = habilidadDiv.querySelector(".coste").value;
-      
-      xml += `
-      <habilidad>
-          <nombre>${nombre}</nombre>
-          <efecto>${efecto}</efecto>
-          <daño>${daño}</daño>
-          <coste>${coste}</coste>
-      </habilidad>`;
+  const fieldset = document.getElementById('habilidades');
+  // Obtener las habilidades personalizadas y agregarlas al XML
+  const habilidadesPersonalizadas = fieldset.querySelectorAll("div");
+  
+  habilidadesPersonalizadas.forEach(habilidadDiv => {
+    console.log("me cago en tu puta madre");
+    const nombre = habilidadDiv.querySelector(".nombre").value;
+    const efecto = habilidadDiv.querySelector(".efecto").value;
+    const daño = habilidadDiv.querySelector(".daño").value;
+    const coste = habilidadDiv.querySelector(".coste").value;
+    
+    xml += `
+    <habilidad>
+      <nombre>${nombre}</nombre>
+      <efecto>${efecto}</efecto>
+      <daño>${daño}</daño>
+      <coste>${coste}</coste>
+    </habilidad>`;
   });
 
   xml += `
@@ -434,4 +517,34 @@ function guardarXML() {
   a.href = URL.createObjectURL(blob);
   a.download = "ficha.xml";
   a.click();
+}
+
+
+
+
+
+function ocultismo(div){
+  const button = document.getElementById(div);
+  const divaOcultar = button.parentElement;
+  const img = button.querySelector('img'); // Obtener la imagen dentro del botón
+
+  const elements = Array.from(divaOcultar.children).filter(child => 
+    child !== button && !(child.tagName === 'TEXTAREA' && child.classList.contains('nombre'))
+  );
+
+  elements.forEach(element => {
+    if (element.style.display === 'none') {
+      element.style.display = '';
+    } else {
+      element.style.display = 'none';
+    }
+  });
+
+  // Cambiar la imagen del botón
+  const anyHidden = elements.some(element => element.style.display === 'none');
+  if (anyHidden) {
+    img.src = 'https://img.icons8.com/ios/50/hide.png';
+  } else {
+    img.src = 'https://img.icons8.com/ios/50/visible--v1.png';
+  }
 }

@@ -1,15 +1,20 @@
-.DivStatsBase{
+.DivStatsBase {
     width: 10vh;
     text-align: center;
+    /* Agrega un poco de padding para dar espacio al contenido */
+    padding: 1vh;
+    /* Suaviza los bordes del contenedor */
+    border-radius: 1vh;
 }
 
-.StatsBase{
+.StatsBase {
     height: 6vh;
     width: 5vh;
     text-align: center;
     font-size: 3vh;
+    /* Añade un color de fondo suave */
+    background-color: #f2f2f2;
 }
-
 #todo {
     border: 2px solid blueviolet;
     display: flex;
@@ -30,6 +35,9 @@ label.salvacion-habilidades{
 }
 fieldset{
     border: 2px solid #8F240D;
+    padding: 1vh;
+    /* Suaviza los bordes del contenedor */
+    border-radius: 1vh;
 }
 .dotes{
     display: flex;
@@ -45,6 +53,9 @@ button {
 .habilidad {
     border: 2px solid #8F240D;
     margin-top: 2vh;
+    padding: 1vh;
+    /* Suaviza los bordes del contenedor */
+    border-radius: 1vh;
 }
 
 fieldset#habilidades{
@@ -66,3 +77,45 @@ textarea#nombre {
 .DivBonificador {
     width: 10vh;
 }
+button {
+    margin-left: auto;
+    /* Añade estilo al botón para hacerlo más atractivo */
+    background-color: #be3011;
+    color: white;
+    width:  4vh;
+    padding-left: 0.5vh;
+    padding-right: 0.5vh;
+    border: none;
+    border-radius: 1vh;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+button:hover {
+    /* Cambia el color al pasar el ratón */
+   background-color: #8F240D;
+}
+textarea.nombre {
+    border: none;
+    overflow: hidden; /* Cambiado de 'auto' a 'hidden' para evitar barras de desplazamiento */
+    outline: none;
+    min-width: 60vh;
+    max-height: 4.3vh;
+    /* Asegúrate de que no haya altura fija */
+    font-family: 'Titulos'; 
+    font-size: 3dvh; 
+    line-height: inherit;
+    text-align: center;
+    background-color: transparent;
+    resize: none;
+    color: #8F240D;
+  }
+
+  @font-face {
+    font-family: 'Titulos';
+    src: url('./Ancient.ttf') format('truetype');
+  }
+  textarea.efecto, .daño, .coste {
+    min-width: 65.28dvh;
+    max-width: 65.28dvh;
+  }
