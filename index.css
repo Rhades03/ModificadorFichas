@@ -44,7 +44,7 @@ fieldset{
     flex-direction: column;
 }
 select{
-    width: 7vh;
+   width: 100%;
 }
 button {
     margin-left: auto;
