@@ -18,6 +18,7 @@ function processXML(xml) {
   document.getElementById('nombre').value = xml.getElementsByTagName("nombre")[0].textContent;
   document.getElementById('lv').value = xml.getElementsByTagName("lv")[0].textContent;
   document.getElementById('sexo').value = xml.getElementsByTagName("sexo")[0].textContent;
+  document.getElementById('vida').value = xml.getElementsByTagName("vida")[0].textContent;
   document.getElementById('inputMana').value = xml.getElementsByTagName("mana")[0].textContent;
 
   document.getElementById('fuerza').value = xml.getElementsByTagName("fuerza")[0].textContent;
@@ -410,6 +411,7 @@ function guardarXML() {
   const nombre = document.getElementById("nombre").value;
   const nivel = document.getElementById("lv").value;
   const sexo = document.getElementById("sexo").value;
+  const vida = document.getElementById("vida").value;
   const mana = document.getElementById("inputMana").value;
 
   const fuerza = document.getElementById("fuerza").value;
@@ -447,6 +449,7 @@ function guardarXML() {
   <nombre>${nombre}</nombre>
   <lv>${nivel}</lv>
   <sexo>${sexo}</sexo>
+  <vida>${vida}</vida>
   <mana>${mana}</mana>
   <estadisticas>
     <fuerza>${fuerza}</fuerza>
